@@ -1,0 +1,29 @@
+[Unit]
+Description=Ad Tracking System API Server
+Documentation=https://github.com/yourusername/ad-tracking-system
+After=network.target postgresql.service
+
+[Service]
+Type=simple
+User=nodejs
+Group=nodejs
+WorkingDirectory=/opt/ad-tracking-system
+Environment=NODE_ENV=production
+EnvironmentFile=/opt/ad-tracking-system/.env
+ExecStart=/usr/bin/node server.js
+Restart=on-failure
+RestartSec=10
+KillMode=mixed
+KillSignal=SIGINT
+TimeoutStopSec=5
+SyslogIdentifier=ad-tracking
+
+# Security settings
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/opt/ad-tracking-system/logs
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,17 @@
+
+<!-- Custom Ad Tracking Pixel -->
+<script>
+(function(){
+    var script = document.createElement('script');
+    script.async = true;
+    script.src = 'https://your-tracking-domain.com/pixel.js?v=' + Math.floor(Date.now()/86400000);
+    var first = document.getElementsByTagName('script')[0];
+    first.parentNode.insertBefore(script, first);
+
+    // Queue for early events
+    window.ct = window.ct || function() {
+        (window.ct.q = window.ct.q || []).push(arguments);
+    };
+})();
+</script>
+<!-- End Custom Ad Tracking Pixel -->
